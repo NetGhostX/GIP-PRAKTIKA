@@ -1,0 +1,1 @@
+CMakeLists.txt not found in C:\Users\Kelvin\Documents\GitHub\GIP-PRAKTIKA\GIP-PRAKTIKA-07 Select CMakeLists.txt

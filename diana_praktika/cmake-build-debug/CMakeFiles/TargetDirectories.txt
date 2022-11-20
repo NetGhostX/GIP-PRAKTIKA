@@ -1,0 +1,3 @@
+C:/Users/Kelvin/Documents/GitHub/GIP-PRAKTIKA/diana_praktika/cmake-build-debug/CMakeFiles/diana_praktika.dir
+C:/Users/Kelvin/Documents/GitHub/GIP-PRAKTIKA/diana_praktika/cmake-build-debug/CMakeFiles/edit_cache.dir
+C:/Users/Kelvin/Documents/GitHub/GIP-PRAKTIKA/diana_praktika/cmake-build-debug/CMakeFiles/rebuild_cache.dir

@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Sudoku: Prüfung des Outputs ihres C++ Programms</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="author" content="Prof. Dr. Andreas Claßen">
+</head>
+<body>
+
+<style>
+body {
+  margin-left: 30px;
+}
+table, th, td {
+  border: 1px solid gray;
+}
+th, td {
+  padding: 10px;
+}
+.ok-item {
+  color: green;
+}
+.nok-item , .missing-item {
+  color: red;
+}
+#header {
+    border-bottom: 1px solid #dddddf;
+    padding-top: .1em;
+    padding-bottom: .25em;
+}
+#itsheader {
+  width: 100%;
+  float: left;
+}
+#details {
+    padding-top: .3em;
+}
+#header-text {
+    width: 90%;
+	float: left;
+    line-height: 1.45;
+    color: rgb(0,177,172);
+    font-size: 1.3em;
+    font-weight: 300;
+    margin-bottom: .5em;
+}
+#header-image {
+  padding-top: 20px;
+  float: right;
+  display: block;
+  box-sizing: border-box;
+}
+#author { color:rgba(0,0,0,.5); }
+#email a{ color:rgba(0,0,0,.5); }
+</style>
+
+<div id="header">
+  <div id="itsheader">
+    <div id="header-text">
+      <h1><i>GIP-INF WiSe 2022/2023, P 05, Sudoku Aufgabe:</i><br>Prüfung des Outputs ihres C++ Programms</h1>
+    </div>
+    <div id="header-image">
+      <img src="https://www.fh-aachen.de/typo3conf/ext/fhac_design_2012/Resources/Public/Images/fh-logo-left.svg" height="150px" alt="FH Logo" id="topright"/>
+    </div>
+  </div>
+
+  <p>
+  <span id="author">Prof. Dr. Andreas Claßen</span> -
+  <span id="email"><a href="mailto:a.classen@fh-aachen.de">a.classen@fh-aachen.de</a></span>
+  </p>
+</div>
+
+<div id="details">
+  <p>Ein <i>"Mini-Jenkins" für diese eine Praktikumsaufgabe</i> &#128521;</p>
+
+  <div style="padding-top: .5em;">
+  <table>
+    <tr>
+      <th>Sudoku</th>
+      <th>Output ihres C++ Programms</th>
+    </tr>
+    <tr>
+      <td style="padding:10pt;font-size:1.7em;">
+        <pre>
+.5.1.4.|.8.6.9.|.7.2.3
+.8.7.2.|.3.4.5.|.6.1.9
+.9.6.3.|.2.1.7.|.5.4.8
+-------|-------|-------
+.6.2.8.|.1.3.4.|.9.5.7
+.1.9.7.|.6.5.2.|.8.3.4
+.4.3.5.|.7.9.8.|.1.6.2
+-------|-------|-------
+.2.4.6.|.9.7.1.|.3.8.5
+.7.5.1.|.4.8.3.|.2.9.6
+.3.8.9.|.5.2.6.|.4.7.1
+        </pre>
+      </td>
+      <td>
+        <pre>
+Das Sudoku ist gueltig.
+Drücken Sie eine beliebige Taste . . .
+        </pre>
+      </td>
+    </tr>
+	
+	
+    <tr>
+      <td style="padding:10pt;font-size:1.7em;">
+        <pre>
+.1.1.4.|.8.6.9.|.7.2.3
+.8.7.2.|.3.4.5.|.6.1.9
+.9.6.3.|.2.1.7.|.5.4.8
+-------|-------|-------
+.6.2.8.|.1.3.4.|.9.5.7
+.1.9.7.|.6.5.2.|.8.3.4
+.4.3.5.|.7.9.8.|.1.6.2
+-------|-------|-------
+.2.4.6.|.9.7.1.|.3.8.5
+.7.5.1.|.4.8.3.|.2.9.6
+.3.8.9.|.5.2.6.|.4.7.9
+        </pre>
+      </td>
+      <td>
+        <textarea id="output2" placeholder="(hier den Output ihres C++ Programms hinein-pasten)" rows="12" cols="50" oninput="check2('output2', 'output2_result')"></textarea>
+        <br><br>
+        <div id="output2_result"></div>
+      </td>
+    </tr>
+	
+	
+    <tr>
+      <td style="padding:10pt;font-size:1.7em;">
+        <pre>
+.1.1.4.|.8.6.9.|.7.2.3
+.8.1.2.|.3.4.5.|.6.1.9
+.9.6.1.|.2.1.7.|.5.4.8
+-------|-------|-------
+.6.2.8.|.1.3.4.|.9.5.7
+.1.9.7.|.6.1.2.|.8.3.4
+.4.3.5.|.7.9.1.|.1.6.2
+-------|-------|-------
+.2.4.6.|.9.7.1.|.1.8.5
+.7.5.1.|.4.8.3.|.2.1.6
+.3.8.9.|.5.2.6.|.4.7.1
+        </pre>
+      </td>
+      <td>
+        <textarea id="output3" placeholder="(hier den Output ihres C++ Programms hinein-pasten)" rows="12" cols="50" oninput="check3('output3', 'output3_result')"></textarea>
+        <br><br>
+        <div id="output3_result"></div>
+      </td>
+    </tr>
+
+
+  </table>
+</div>
+
+<p>Andreas Claßen</p>
+
+<script>
+function add_node(element_id, html) {
+	let newNode = document.createElement('div');
+	newNode.innerHTML = html;
+	document.getElementById(element_id).appendChild(newNode);		
+}
+
+function check(mandatory_lines, optional_lines, output_id, output_result_id) {
+    document.getElementById(output_result_id).innerHTML = ''; // ... clear output_result area
+
+    mandatory_regex = mandatory_lines.split("\n").filter( l => l.trim()).map(line => new RegExp(line
+						.replaceAll("Spalte ", ".*Spalte.*")
+						.replaceAll(": Zahl ", ".*")
+						.replaceAll(" kommt ", ".*")
+						.replaceAll(" vor.", ".*")
+						, "i"));
+    optional_regex = optional_lines.split("\n").filter( l => l.trim()).map(line => new RegExp(line
+						.replaceAll("Drücken Sie eine beliebige ", ".*")
+						.replaceAll(" . . .", ".*")
+						, "i"));
+						
+    let output_lines = document.getElementById(output_id).value.split("\n").filter( l => l.trim());
+	
+	// Reihenfolge der Zeilen unbedingt beibehalten, trotz OK/NOK Einstufung ...
+    output_lines.forEach( line => {
+		add_node(output_result_id, 
+				 mandatory_regex.map(regex => line.match(regex)).filter(m => m).length > 0 || 
+				 optional_regex.map(regex => line.match(regex)).filter(m => m).length > 0 ? 
+					"<div class=\"ok-item\">" + line + " (OK)</div>" :
+					"<div class=\"nok-item\">" + line + " (NOK)</div>"
+		);
+	});
+	let missing_lines = mandatory_lines.split("\n").filter(line => !output_lines.includes(line)).filter( l => l.trim());
+	if (missing_lines.length > 0) {
+		add_node(output_result_id, "<br><b><i>Folgende Zeilen fehlen in ihrem Output:</i></b><br>");	
+		missing_lines.forEach( line => {
+			add_node(output_result_id, "<div class=\"missing-item\">" + line + "</div>");
+        });
+    }
+}
+
+function check2(output_id, output_result_id) {
+check(
+`
+Spalte 0: Zahl 1 kommt mehrfach vor.
+Spalte 0: Zahl 5 kommt nicht vor.
+Spalte 8: Zahl 1 kommt nicht vor.
+Spalte 8: Zahl 9 kommt mehrfach vor.
+Zeile 0: Zahl 1 kommt mehrfach vor.
+Zeile 0: Zahl 5 kommt nicht vor.
+Zeile 8: Zahl 1 kommt nicht vor.
+Zeile 8: Zahl 9 kommt mehrfach vor.
+Block 0: Zahl 1 kommt mehrfach vor.
+Block 0: Zahl 5 kommt nicht vor.
+Block 8: Zahl 1 kommt nicht vor.
+Block 8: Zahl 9 kommt mehrfach vor.
+`
+,
+`
+Drücken Sie eine beliebige Taste . . .
+`
+, 
+output_id, output_result_id);
+}
+
+function check3(output_id, output_result_id) {
+check(
+`
+Spalte 0: Zahl 1 kommt mehrfach vor.
+Spalte 0: Zahl 5 kommt nicht vor.
+Spalte 1: Zahl 1 kommt mehrfach vor.
+Spalte 1: Zahl 7 kommt nicht vor.
+Spalte 2: Zahl 1 kommt mehrfach vor.
+Spalte 2: Zahl 3 kommt nicht vor.
+Spalte 4: Zahl 1 kommt mehrfach vor.
+Spalte 4: Zahl 5 kommt nicht vor.
+Spalte 5: Zahl 1 kommt mehrfach vor.
+Spalte 5: Zahl 8 kommt nicht vor.
+Spalte 6: Zahl 1 kommt mehrfach vor.
+Spalte 6: Zahl 3 kommt nicht vor.
+Spalte 7: Zahl 1 kommt mehrfach vor.
+Spalte 7: Zahl 9 kommt nicht vor.
+Zeile 0: Zahl 1 kommt mehrfach vor.
+Zeile 0: Zahl 5 kommt nicht vor.
+Zeile 1: Zahl 1 kommt mehrfach vor.
+Zeile 1: Zahl 7 kommt nicht vor.
+Zeile 2: Zahl 1 kommt mehrfach vor.
+Zeile 2: Zahl 3 kommt nicht vor.
+Zeile 4: Zahl 1 kommt mehrfach vor.
+Zeile 4: Zahl 5 kommt nicht vor.
+Zeile 5: Zahl 1 kommt mehrfach vor.
+Zeile 5: Zahl 8 kommt nicht vor.
+Zeile 6: Zahl 1 kommt mehrfach vor.
+Zeile 6: Zahl 3 kommt nicht vor.
+Zeile 7: Zahl 1 kommt mehrfach vor.
+Zeile 7: Zahl 9 kommt nicht vor.
+Block 0: Zahl 1 kommt mehrfach vor.
+Block 0: Zahl 3 kommt nicht vor.
+Block 0: Zahl 5 kommt nicht vor.
+Block 0: Zahl 7 kommt nicht vor.
+Block 4: Zahl 1 kommt mehrfach vor.
+Block 4: Zahl 5 kommt nicht vor.
+Block 4: Zahl 8 kommt nicht vor.
+Block 8: Zahl 1 kommt mehrfach vor.
+Block 8: Zahl 3 kommt nicht vor.
+Block 8: Zahl 9 kommt nicht vor.
+`
+,
+`
+Drücken Sie eine beliebige Taste . . .
+`
+, 
+output_id, output_result_id);
+}
+
+</script>
+</div>
+</body>
+</html>
