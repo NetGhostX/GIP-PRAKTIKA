@@ -1,0 +1,6 @@
+﻿  main.cpp
+  person.cpp
+  texte.cpp
+C:\Users\Kelvin\source\repos\main\texte.cpp(35,5): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+  Generating Code...
+  main.vcxproj -> C:\Users\Kelvin\source\repos\main\x64\Debug\main.exe
