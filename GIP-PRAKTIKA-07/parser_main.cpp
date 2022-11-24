@@ -8,13 +8,13 @@
 bool expect(char c, std::string &input, std::size_t pos)
 {
     std::cout << "Teste auf das Zeichen " << c << std::endl;
-    if ( pos >= input.length() ) //if we are already at the end of the input
+    if ( pos >= input.length() ) 
     {
         std::cout << "Aber schon am Ende der "
                   << "Eingabe-Zeichenkette angelangt.\n";
         return false;
     }
-    if ( input.at(pos) == c ) //if the symbol is found 
+    if ( input.at(pos) == c ) //if  
     {
         std::cout << "Zeichen " << c << " gefunden.\n";
         return true;
@@ -52,6 +52,7 @@ void match(char c, std::string &input, std::size_t &pos)
               << "Verlasse match() fuer das Zeichen " 
               << c << std::endl;
 }
+
 // Die Funktions-Prototypen ...
 void parse_gesamtausdruck(std::string &input, std::size_t &pos);
 void parse_ausdruck(std::string &input, std::size_t &pos);
@@ -70,9 +71,6 @@ void parse_gesamtausdruck(std::string &input, std::size_t &pos)
     match('.', input, pos);
     // ... (TODO)
 
-
-
-    
     std::cout << "Verlasse parse_gesamtausdruck()" << std::endl;
 }
 
@@ -169,6 +167,7 @@ void parse_operand(std::string &input, std::size_t &pos)
         std::cout << "Verlasse parse_operand(): '(' Fall" << std::endl;        
     }
     else {
+        
         // ... (TODO)
         parse_number(input, pos);
         

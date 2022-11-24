@@ -1,0 +1,6 @@
+﻿  main.cpp
+  suchen_rekursiv.cpp
+C:\Users\Kelvin\source\repos\PRAKTIKA-06\main\suchen_rekursiv.cpp(24,28): warning C4267: 'return': conversion from 'size_t' to 'int', possible loss of data
+  suchen_test_rekursiv.cpp
+  Generating Code...
+  main.vcxproj -> C:\Users\Kelvin\source\repos\PRAKTIKA-06\main\x64\Debug\main.exe
