@@ -1,0 +1,19 @@
+# ninja log v5
+7	528	6914481105297024	CMakeFiles/gip_praktika_08.dir/liste.cpp.obj	12bd98a37ef0f81d
+18	613	6914481106158714	CMakeFiles/gip_praktika_08.dir/test_liste_als_string_rueckwaerts.cpp.obj	b70dc724c37b0fef
+4	828	6914481108299231	CMakeFiles/gip_praktika_08.dir/test_aus_liste_loeschen.cpp.obj	54b9c0aa166c0d96
+1	556	6914481105588537	CMakeFiles/gip_praktika_08.dir/main.cpp.obj	e801e03e60189c44
+14	1001	6914481110032383	CMakeFiles/gip_praktika_08.dir/test_in_liste_einfuegen.cpp.obj	1d83e4c613da132
+11	661	6914481106641972	CMakeFiles/gip_praktika_08.dir/test_hinten_anfuegen.cpp.obj	9402630c90de8301
+1001	1165	6914481111647624	gip_praktika_08.exe	54dc99d8def6669a
+7	646	6914984412300747	CMakeFiles/gip_praktika_08.dir/liste.cpp.obj	7592e735a05e63a1
+1	654	6914984412380770	CMakeFiles/gip_praktika_08.dir/main.cpp.obj	2d88c575e01504b9
+50	710	6914984412946255	CMakeFiles/gip_praktika_08.dir/test_liste_als_string_rueckwaerts.cpp.obj	345f6532450b7c87
+21	711	6914984412966180	CMakeFiles/gip_praktika_08.dir/test_hinten_anfuegen.cpp.obj	b4205a99b345fcdf
+45	943	6914984415274566	CMakeFiles/gip_praktika_08.dir/test_aus_liste_loeschen.cpp.obj	dd5057c50dbf5e26
+16	1089	6914984416734839	CMakeFiles/gip_praktika_08.dir/test_in_liste_einfuegen.cpp.obj	eb168ef9e10712e5
+1089	1331	6914984419088744	gip_praktika_08.exe	eb9916f69be58d0c
+10	1560	6915044639375434	CMakeFiles/gip_praktika_08.dir/liste.cpp.obj	7592e735a05e63a1
+1560	2088	6915044644580042	gip_praktika_08.exe	eb9916f69be58d0c
+19	620	6915055483401963	CMakeFiles/gip_praktika_08.dir/liste.cpp.obj	7592e735a05e63a1
+620	843	6915055485510654	gip_praktika_08.exe	eb9916f69be58d0c
