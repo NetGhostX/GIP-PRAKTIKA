@@ -14,9 +14,9 @@ int main()
 
     int wert = 99;
 
-    suchbaum::BaumKnoten *anker = nullptr;
+    suchbaum::BaumKnoten *anker = nullptr; // Anfangs ist der Baum leer
 
-    suchbaum::ausgeben(anker);
+    suchbaum::ausgeben(anker); // Baum ausgeben
 
     do
     {
