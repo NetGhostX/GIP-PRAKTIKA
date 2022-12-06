@@ -1,3 +1,9 @@
+//
+// Created by kelvi on 12/7/2022.
+//
+
+#ifndef AUFGABE_01_GIP_MINI_CATCH_H
+#define AUFGABE_01_GIP_MINI_CATCH_H
 // Datei: gip_mini_catch.h
 // Autor: Andreas Claßen
 // Version: 2.0
@@ -26,7 +32,7 @@ namespace Catch {
                      std::string _fun_name, int _line_number):
                 test_fun_ptr(_test_fun_ptr), desc(_desc),
                 fun_name(_fun_name), line_number(_line_number)
-            {}
+        {}
     };
 
     class TestCaseRegister {
@@ -35,22 +41,22 @@ namespace Catch {
         // Nur verfuegbar C++17 und spaeter ...
         // static std::vector<TestCaseInfo> test_case_infos;
     public:
-            TestCaseRegister(test_fun_ptr_type test_fun_ptr, std::string desc,
-                             std::string fun_name, int line_number)
-                {
-                    get_test_case_infos().push_back( TestCaseInfo{test_fun_ptr, desc, fun_name, line_number} );
-                }
-            // Pre-C++17 Loesung fuer das C++ Static Initialization Order Fiasco ...
-            // Siehe https://isocpp.org/wiki/faq/ctors#static-init-order ...
-            static std::vector<TestCaseInfo>& get_test_case_infos() {
-                static std::vector<TestCaseInfo> test_case_infos;
-                return test_case_infos;
+        TestCaseRegister(test_fun_ptr_type test_fun_ptr, std::string desc,
+                         std::string fun_name, int line_number)
+        {
+            get_test_case_infos().push_back( TestCaseInfo{test_fun_ptr, desc, fun_name, line_number} );
+        }
+        // Pre-C++17 Loesung fuer das C++ Static Initialization Order Fiasco ...
+        // Siehe https://isocpp.org/wiki/faq/ctors#static-init-order ...
+        static std::vector<TestCaseInfo>& get_test_case_infos() {
+            static std::vector<TestCaseInfo> test_case_infos;
+            return test_case_infos;
+        }
+        static void run() {
+            for(TestCaseInfo& tc_info : get_test_case_infos()) {
+                tc_info.test_fun_ptr();
             }
-            static void run() {
-                for(TestCaseInfo& tc_info : get_test_case_infos()) {
-                    tc_info.test_fun_ptr();
-                }
-            }
+        }
     };
 
     class Session {
@@ -83,17 +89,17 @@ namespace Catch {
             }
             else if (get_assertions_total() == get_assertions_passed()) {
                 std::cerr << "Alle Tests erfolgreich ("
-                << get_assertions_total() << " REQUIREs in "
-                << TestCaseRegister::get_test_case_infos().size()
-                << " Test Cases)" << std::endl;
+                          << get_assertions_total() << " REQUIREs in "
+                          << TestCaseRegister::get_test_case_infos().size()
+                          << " Test Cases)" << std::endl;
             }
             else {
                 std::cerr << "Tests Cases: "
-                << TestCaseRegister::get_test_case_infos().size()
-                << "\nREQUIREs: "
-                << get_assertions_total() << " | "
-                << get_assertions_passed() << " erfolgreich | "
-                << get_assertions_failed() << " fehlgeschlagen\n";
+                          << TestCaseRegister::get_test_case_infos().size()
+                          << "\nREQUIREs: "
+                          << get_assertions_total() << " | "
+                          << get_assertions_passed() << " erfolgreich | "
+                          << get_assertions_failed() << " fehlgeschlagen\n";
             }
         }
     };
@@ -122,25 +128,27 @@ namespace Catch {
 #define __func__ __FUNCTION__
 #endif
 
-    #define Q(x) #x
-    #define QUOTE(x) Q(x)
+#define Q(x) #x
+#define QUOTE(x) Q(x)
 
 #ifndef TEST_FILE
-    #define UNIQUE_NAME3( name , line ) name##line
-    #define UNIQUE_NAME2( name , line ) UNIQUE_NAME3( name ,line )
-    #define UNIQUE_NAME( name ) UNIQUE_NAME2( name , __LINE__ )
+#define UNIQUE_NAME3( name , line ) name##line
+#define UNIQUE_NAME2( name , line ) UNIQUE_NAME3( name ,line )
+#define UNIQUE_NAME( name ) UNIQUE_NAME2( name , __LINE__ )
 #else
     #define UNIQUE_NAME3( name , file , line ) name##file##line
     #define UNIQUE_NAME2( name , file, line ) UNIQUE_NAME3( name , file , line )
     #define UNIQUE_NAME( name ) UNIQUE_NAME2( name , TEST_FILE, __LINE__ )
 #endif
-    #define TEST_CASE( desc ) \
+#define TEST_CASE( desc ) \
         void UNIQUE_NAME( test_function )(); \
         Catch::TestCaseRegister UNIQUE_NAME( regtc )( & UNIQUE_NAME( test_function ), desc , QUOTE( UNIQUE_NAME( test_function ) ) , __LINE__ ); \
         void UNIQUE_NAME( test_function )()
 
 
-    #define REQUIRE( expr ) \
+#define REQUIRE( expr ) \
         if (expr) { Catch::collect_ok(#expr, __FUNCTION__, __FILE__, __LINE__); } \
                 else { Catch::collect_fail(#expr, __FUNCTION__, __FILE__, __LINE__); }
 }
+
+#endif //AUFGABE_01_GIP_MINI_CATCH_H

@@ -14,22 +14,23 @@ int main()
 
     int wert = 99;
 
-    suchbaum::BaumKnoten *anker = nullptr; // Anfangs ist der Baum leer
+    suchbaum::BaumKnoten *anker = nullptr;
 
-    suchbaum::ausgeben(anker); // Baum ausgeben
+    suchbaum::uberpruefe(anker);
 
     do
     {
         std::cout << "Naechster Wert (99 beendet): ? ";
         std::cin >> wert;
 
-        if (wert != 99) {
+        if (wert != 99)
+        {
             suchbaum::einfuegen(anker, wert);
         }
 
     } while (wert != 99);
 
-    suchbaum::ausgeben(anker);
+    suchbaum::uberpruefe(anker);
 
     system("PAUSE");
     return 0;

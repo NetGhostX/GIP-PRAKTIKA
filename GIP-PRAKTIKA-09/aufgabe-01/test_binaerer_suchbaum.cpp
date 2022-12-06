@@ -1,11 +1,15 @@
+//
+// Created by kelvi on 12/7/2022.
+//
 // Datei: test_binaerer_suchbaum.cpp
 
 #include "gip_mini_catch.h"
 
 #include "binaerer_suchbaum.h"
 
-TEST_CASE("Suchbaum bestehend aus einem Knoten.") {
-    suchbaum::BaumKnoten* anker = nullptr;
+TEST_CASE("Suchbaum bestehend aus einem Knoten.")
+{
+    suchbaum::BaumKnoten *anker = nullptr;
     suchbaum::einfuegen(anker, 50);
 
     REQUIRE(anker->wert == 50);
@@ -13,8 +17,9 @@ TEST_CASE("Suchbaum bestehend aus einem Knoten.") {
     REQUIRE(anker->rechts == nullptr);
 }
 
-TEST_CASE("Balancierter Suchbaum, bestehend aus drei Knoten.") {
-    suchbaum::BaumKnoten* anker = nullptr;
+TEST_CASE("Balancierter Suchbaum, bestehend aus drei Knoten.")
+{
+    suchbaum::BaumKnoten *anker = nullptr;
     suchbaum::einfuegen(anker, 50);
     suchbaum::einfuegen(anker, 25);
     suchbaum::einfuegen(anker, 75);
@@ -30,8 +35,9 @@ TEST_CASE("Balancierter Suchbaum, bestehend aus drei Knoten.") {
     REQUIRE(anker->rechts->rechts == nullptr);
 }
 
-TEST_CASE("Unbalancierter Suchbaum, bestehend aus drei Knoten, nur links.") {
-    suchbaum::BaumKnoten* anker = nullptr;
+TEST_CASE("Unbalancierter Suchbaum, bestehend aus drei Knoten, nur links.")
+{
+    suchbaum::BaumKnoten *anker = nullptr;
     suchbaum::einfuegen(anker, 50);
     suchbaum::einfuegen(anker, 25);
     suchbaum::einfuegen(anker, 10);
@@ -47,8 +53,9 @@ TEST_CASE("Unbalancierter Suchbaum, bestehend aus drei Knoten, nur links.") {
     REQUIRE(anker->links->links->rechts == nullptr);
 }
 
-TEST_CASE("Unbalancierter Suchbaum, bestehend aus drei Knoten, links-rechts.") {
-    suchbaum::BaumKnoten* anker = nullptr;
+TEST_CASE("Unbalancierter Suchbaum, bestehend aus drei Knoten, links-rechts.")
+{
+    suchbaum::BaumKnoten *anker = nullptr;
     suchbaum::einfuegen(anker, 50);
     suchbaum::einfuegen(anker, 25);
     suchbaum::einfuegen(anker, 35);
@@ -64,8 +71,9 @@ TEST_CASE("Unbalancierter Suchbaum, bestehend aus drei Knoten, links-rechts.") {
     REQUIRE(anker->links->rechts->rechts == nullptr);
 }
 
-TEST_CASE("Unbalancierter Suchbaum, bestehend aus drei Knoten, nur rechts.") {
-    suchbaum::BaumKnoten* anker = nullptr;
+TEST_CASE("Unbalancierter Suchbaum, bestehend aus drei Knoten, nur rechts.")
+{
+    suchbaum::BaumKnoten *anker = nullptr;
     suchbaum::einfuegen(anker, 50);
     suchbaum::einfuegen(anker, 75);
     suchbaum::einfuegen(anker, 100);
@@ -81,8 +89,9 @@ TEST_CASE("Unbalancierter Suchbaum, bestehend aus drei Knoten, nur rechts.") {
     REQUIRE(anker->rechts->rechts->rechts == nullptr);
 }
 
-TEST_CASE("Unbalancierter Suchbaum, bestehend aus drei Knoten, rechts-links.") {
-    suchbaum::BaumKnoten* anker = nullptr;
+TEST_CASE("Unbalancierter Suchbaum, bestehend aus drei Knoten, rechts-links.")
+{
+    suchbaum::BaumKnoten *anker = nullptr;
     suchbaum::einfuegen(anker, 50);
     suchbaum::einfuegen(anker, 75);
     suchbaum::einfuegen(anker, 65);
@@ -98,8 +107,9 @@ TEST_CASE("Unbalancierter Suchbaum, bestehend aus drei Knoten, rechts-links.") {
     REQUIRE(anker->rechts->links->rechts == nullptr);
 }
 
-TEST_CASE("Balancierter Suchbaum, bestehend aus sieben Knoten.") {
-    suchbaum::BaumKnoten* anker = nullptr;
+TEST_CASE("Balancierter Suchbaum, bestehend aus sieben Knoten.")
+{
+    suchbaum::BaumKnoten *anker = nullptr;
     suchbaum::einfuegen(anker, 50);
     suchbaum::einfuegen(anker, 25);
     suchbaum::einfuegen(anker, 35);
