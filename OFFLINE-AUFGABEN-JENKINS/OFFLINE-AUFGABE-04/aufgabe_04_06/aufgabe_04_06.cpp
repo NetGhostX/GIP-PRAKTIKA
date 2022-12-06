@@ -10,5 +10,5 @@ int main()
     {
         reversed +=  eingabe[eingabe.length()-i-1];
     }
-    std::cout << "This is the reversed Text " << reversed;
+    std::cout << reversed << std::endl;
 }
