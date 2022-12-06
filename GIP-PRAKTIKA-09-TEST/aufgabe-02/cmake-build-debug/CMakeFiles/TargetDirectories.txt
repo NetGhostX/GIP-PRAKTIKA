@@ -1,0 +1,3 @@
+C:/Users/kelvi/Downloads/GIP-PRAKTIKA-09/aufgabe-02/cmake-build-debug/CMakeFiles/aufgabe_02.dir
+C:/Users/kelvi/Downloads/GIP-PRAKTIKA-09/aufgabe-02/cmake-build-debug/CMakeFiles/edit_cache.dir
+C:/Users/kelvi/Downloads/GIP-PRAKTIKA-09/aufgabe-02/cmake-build-debug/CMakeFiles/rebuild_cache.dir

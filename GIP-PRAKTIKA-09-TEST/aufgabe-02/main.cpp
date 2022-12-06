@@ -10,7 +10,7 @@
 int main()
 {
     // Aufruf der Unit Tests ...
-    // Catch::Session().run();
+    Catch::Session().run();
 
     int wert = 99;
 
@@ -23,8 +23,7 @@ int main()
         std::cout << "Naechster Wert (99 beendet): ? ";
         std::cin >> wert;
 
-        if (wert != 99)
-        {
+        if (wert != 99) {
             baum.einfuegen(wert);
         }
 

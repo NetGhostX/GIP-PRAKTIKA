@@ -5,18 +5,18 @@
 
 #include <iostream>
 
-#include "BinaererSuchbaum.h"
+#include "binaerer_suchbaum.h"
 
 int main()
 {
     // Aufruf der Unit Tests ...
-    // Catch::Session().run();
+    Catch::Session().run();
 
     int wert = 99;
 
-    BinaererSuchbaum baum;
+    suchbaum::BaumKnoten *anker = nullptr;
 
-    baum.ausgeben();
+    suchbaum::uberpruefe(anker);
 
     do
     {
@@ -25,12 +25,12 @@ int main()
 
         if (wert != 99)
         {
-            baum.einfuegen(wert);
+            suchbaum::einfuegen(anker, wert);
         }
 
     } while (wert != 99);
 
-    baum.ausgeben();
+    suchbaum::uberpruefe(anker);
 
     system("PAUSE");
     return 0;

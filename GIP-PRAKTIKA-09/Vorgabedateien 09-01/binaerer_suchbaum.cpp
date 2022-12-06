@@ -42,6 +42,7 @@ void suchbaum::einfuegen(suchbaum::BaumKnoten *anker, int neuer_wert)
                                    aktuell = aktuell->rechts;
                             }
                      }
+                     
               }
        }
 
@@ -74,8 +75,4 @@ void suchbaum::knoten_ausgaben(BaumKnoten* knoten, unsigned int tiefe)
 
 // Path: Vorgabedateien 09-01\main.cpp
 // Compare this snippet from Vorgabedateien 09-01\binaerer_suchbaum.h:
-// namespace suchbaum
-// {
-//        struct BaumKnoten
-//        {
-//               int wert;
+
