@@ -5,73 +5,39 @@
 #include "binaerer_suchbaum.h"
 #include "binaerer_suchbaum.h"
 
-void suchbaum ::einfuegen(BaumKnoten *&Anker, int neu_wert)
-{
+//previous solution was incorrect so i rewrote the method einfügen mit recursion. 
 
-    BaumKnoten *neu_knoten = new BaumKnoten;
-    neu_knoten->wert = neu_wert;
-    neu_knoten->rechts = nullptr;
-    neu_knoten->links = nullptr;
+void suchbaum::einfuegen(BaumKnoten *&Anker, int neu_wert)
+{
+    // If the root node is null, set the new node as the root
     if (Anker == nullptr)
     {
-
+        BaumKnoten *neu_knoten = new BaumKnoten;
+        neu_knoten->wert = neu_wert;
+        neu_knoten->rechts = nullptr;
+        neu_knoten->links = nullptr;
         Anker = neu_knoten;
+        return;
     }
+
+    // If the value of the new node is less than the value of the root node,
+    // insert it into the left subtree. Otherwise, insert it into the right subtree.
+    if (neu_wert < Anker->wert)
+    {
+        einfuegen(Anker->links, neu_wert);
+    }
+    else if (neu_wert > Anker->wert)
+    {
+        einfuegen(Anker->rechts, neu_wert);
+    }
+    // If the value of the new node is equal to the value of the root node,
+    // return without inserting the node (it already exists in the tree).
     else
     {
-        BaumKnoten *ptr = Anker;
-        do
-        {
-            if (neu_wert == ptr->wert)
-            {
-                return;
-            }
-            if (neu_wert < ptr->wert)
-            {
-                do
-                {
-                    if (ptr->links == nullptr)
-                    {
-                        break;
-                    }
-                    ptr = ptr->links;
-                    if (neu_wert > ptr->wert)
-                    {
-                        break;
-                    }
-                } while (ptr != nullptr);
-            }
-            else if (neu_wert > ptr->wert)
-            {
-                do
-                {
-                    if (ptr->rechts == nullptr)
-                    {
-                        break;
-                    }
-                    ptr = ptr->rechts;
-                    if (neu_wert < ptr->wert)
-                    {
-                        break;
-                    }
-                } while (ptr != nullptr);
-            }
-            if (ptr->rechts == nullptr && neu_wert > ptr->wert)
-            {
-
-                ptr->rechts = neu_knoten;
-                return;
-            }
-            if (ptr->links == nullptr && neu_wert < ptr->wert)
-            {
-                ptr->links = neu_knoten;
-                return;
-            }
-        } while (ptr->rechts != nullptr || ptr->links != nullptr);
-
-        ptr = neu_knoten;
+        return;
     }
 }
+
 void suchbaum::ausgeben(BaumKnoten *knoten, unsigned int zaehler)
 {
 
