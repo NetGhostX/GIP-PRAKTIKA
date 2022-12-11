@@ -29,7 +29,7 @@ int main()
 
     const unsigned int size_x = 20, size_y = 15;
 
-    MyCanvas canvas{size_x, size_y};
+    MyCanvas canvas{size_x, size_y };
 
     unsigned int x1 = random_unsigned(0, size_x / 2);
     unsigned int y1 = random_unsigned(0, size_y / 2);

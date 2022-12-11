@@ -2,10 +2,9 @@
 #include <iostream>
 #include <string>
 
-void MyCanvas::set(unsigned int x, unsigned int y, unsigned int c)
+void MyCanvas::set(unsigned int x, unsigned int y, char c)
 {
 	canvas_array_ptr[y * get_size_x() + x] = c;
-
 }
 char MyCanvas::get(unsigned int x, unsigned int y) const
 {
@@ -23,7 +22,7 @@ std::string MyCanvas::to_string() const
 		}
 		result += '\n';
 	}
-
+	std::cout << result;
 	return result;
 }
 void MyCanvas::print() const
