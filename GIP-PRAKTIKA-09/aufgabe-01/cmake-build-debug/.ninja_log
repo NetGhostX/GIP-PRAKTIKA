@@ -1,9 +1,9 @@
 # ninja log v5
-4	539	6920717711956387	CMakeFiles/aufgabe_01.dir/binaerer_suchbaum.cpp.obj	ed28126eac5bae6e
-0	648	6920717713034775	CMakeFiles/aufgabe_01.dir/main.cpp.obj	99131cf37eb20914
-7	888	6920717715434602	CMakeFiles/aufgabe_01.dir/test_binaerer_suchbaum.cpp.obj	c4a6a8b615c7f0b0
-889	1015	6920717716680058	aufgabe_01.exe	ef3dbd32dedbc292
 9	505	6920726501554256	CMakeFiles/aufgabe_01.dir/binaerer_suchbaum.cpp.obj	edd31a09f8dfe3cd
 3	615	6920726502655787	CMakeFiles/aufgabe_01.dir/main.cpp.obj	35ad4e33ea347269
 6	848	6920726504978692	CMakeFiles/aufgabe_01.dir/test_binaerer_suchbaum.cpp.obj	54459de1c62bc344
 848	947	6920726505950662	aufgabe_01.exe	ef3dbd32dedbc292
+6	572	6924278941349207	CMakeFiles/aufgabe_01.dir/binaerer_suchbaum.cpp.obj	592d9022ac251ab1
+3	659	6924278942210308	CMakeFiles/aufgabe_01.dir/main.cpp.obj	a2526a67ec93e93b
+10	900	6924278944610343	CMakeFiles/aufgabe_01.dir/test_binaerer_suchbaum.cpp.obj	39e119b0a4f1d22f
+901	1035	6924278945924799	aufgabe_01.exe	ef3dbd32dedbc292

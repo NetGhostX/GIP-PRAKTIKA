@@ -5,14 +5,11 @@
 #include "binaerer_suchbaum.h"
 #include "binaerer_suchbaum.h"
 
-//previous solution was incorrect so i rewrote the method einfügen mit recursion. 
-
-void suchbaum::einfuegen(BaumKnoten *&Anker, int neu_wert)
+void suchbaum::einfuegen(BaumKnoten*& Anker, int neu_wert)
 {
-    // If the root node is null, set the new node as the root
     if (Anker == nullptr)
     {
-        BaumKnoten *neu_knoten = new BaumKnoten;
+        BaumKnoten* neu_knoten = new BaumKnoten;
         neu_knoten->wert = neu_wert;
         neu_knoten->rechts = nullptr;
         neu_knoten->links = nullptr;
@@ -20,8 +17,6 @@ void suchbaum::einfuegen(BaumKnoten *&Anker, int neu_wert)
         return;
     }
 
-    // If the value of the new node is less than the value of the root node,
-    // insert it into the left subtree. Otherwise, insert it into the right subtree.
     if (neu_wert < Anker->wert)
     {
         einfuegen(Anker->links, neu_wert);
@@ -30,13 +25,13 @@ void suchbaum::einfuegen(BaumKnoten *&Anker, int neu_wert)
     {
         einfuegen(Anker->rechts, neu_wert);
     }
-    // If the value of the new node is equal to the value of the root node,
-    // return without inserting the node (it already exists in the tree).
+
     else
     {
         return;
     }
 }
+
 
 void suchbaum::ausgeben(BaumKnoten *knoten, unsigned int zaehler)
 {
