@@ -22,7 +22,6 @@ std::string MyCanvas::to_string() const
 		}
 		result += '\n';
 	}
-	std::cout << result;
 	return result;
 }
 void MyCanvas::print() const
