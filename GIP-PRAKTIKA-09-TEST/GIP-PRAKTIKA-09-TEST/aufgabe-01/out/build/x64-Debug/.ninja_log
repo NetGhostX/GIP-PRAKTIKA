@@ -1,0 +1,7 @@
+# ninja log v5
+7	901	6924016453607354	CMakeFiles/aufgabe_01.dir/binaerer_suchbaum.cpp.obj	865c20ea6d59d917
+3	904	6924016453626664	CMakeFiles/aufgabe_01.dir/main.cpp.obj	4d76e2be72c2c8f3
+10	925	6924016453837173	CMakeFiles/aufgabe_01.dir/test_binaerer_suchbaum.cpp.obj	9099b762def8dce6
+925	1197	6924016456428128	aufgabe_01.exe	778019887120bc35
+3	811	6924018741909254	CMakeFiles/aufgabe_01.dir/binaerer_suchbaum.cpp.obj	865c20ea6d59d917
+811	959	6924018743070856	aufgabe_01.exe	778019887120bc35
