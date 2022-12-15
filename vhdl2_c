@@ -1,0 +1,212 @@
+Kelvin.k
+#3150
+
+AJ — 11/29/2022 2:30 PM
+Attachment file type: archive
+Versuch_2a.zip
+4.47 MB
+Attachment file type: archive
+Versuch_2b.zip
+4.61 MB
+Attachment file type: archive
+Versuch_2c.zip
+4.55 MB
+AJ — 11/30/2022 12:42 PM
+Image
+Image
+Image
+VHDL
+Image
+Image
+Image
+Image
+Image
+Image
+Image
+Image
+Image
+Image
+Image
+Image
+Image
+Image
+Image
+Image
+Image
+3 METER BERAT 3 METER — 12/08/2022 1:52 PM
+was steht da von unten die dritte Zeile?
+3 METER BERAT 3 METER — 12/08/2022 2:05 PM
+und wie muss man nochmal die vorgegebenen dateien umbenennen damit ich die vorgaben sehen kann?
+Rizgar47 — 12/08/2022 5:39 PM
+Meinst du für TI?
+3 METER BERAT 3 METER — 12/08/2022 5:39 PM
+Ja
+Rizgar47 — 12/08/2022 5:39 PM
+Wenn ja dann musst du die ZIP entpavken und da ist eine datei mit .vhd
+Das ist der Code
+3 METER BERAT 3 METER — 12/08/2022 5:40 PM
+Stimmt
+So war das
+Ich hatte die ganze Zeit irgendwas mit Umbenennen oder so im Kopf
+Rizgar47 — 12/08/2022 5:40 PM
+Das musst glaub machen wenn du die Virgabedatein auf Ilias nimmst
+Aber wenn du die von AJ nimmst 
+Dann .vhd
+Ich glaub bei den vorhabe Dateien musste das .sec weg
+3 METER BERAT 3 METER — 12/08/2022 5:41 PM
+Ich schau gleich mal
+Ben10 — 12/11/2022 2:38 PM
+Image
+Für die, die in der kommende Woche Steckboard 2 haben werden
+3 METER BERAT 3 METER — 12/11/2022 4:29 PM
+.
+3 METER BERAT 3 METER — 12/11/2022 7:50 PM
+Wann machen wir weiter @Ben10 @AJ @carlito
+Ben10 — 12/11/2022 7:54 PM
+bin noch am essen
+aber bin gleich fertig
+carlito — 12/11/2022 8:08 PM
+ok
+carlito — 12/11/2022 8:42 PM
+Attachment file type: archive
+Versuch_2b.zip
+4.65 MB
+AJ — 12/11/2022 8:59 PM
+Aufgabe 2a
+library ieee;
+use ieee.std_logic_1164.all;
+use ieee.numeric_std.all;
+
+entity taktteiler is 
+
+Expand
+2a.txt
+1 KB
+AJ — 12/11/2022 9:59 PM
+Aufgabe 2b
+library ieee;
+use ieee.std_logic_1164.all;
+use ieee.numeric_std.all;
+
+entity counter is 
+
+Expand
+2b.txt
+2 KB
+3 METER BERAT 3 METER — 12/11/2022 10:06 PM
+letzte v aufgabe 2b
+Image
+carlito — 12/11/2022 10:35 PM
+Image
+AJ — 12/12/2022 9:40 AM
+Aufgabe 2c
+library ieee;
+use ieee.std_logic_1164.all;
+use ieee.numeric_std.all;
+
+entity sortierer is
+	generic (
+Expand
+2c.txt
+3 KB
+﻿
+library ieee;
+use ieee.std_logic_1164.all;
+use ieee.numeric_std.all;
+
+entity sortierer is
+	generic (
+		CNT_OFL : positive := 50000000; -- Sekundentakt ofl
+		TIME_WEG_K : positive := 5 ; -- Kunststoff-Werkstück, langer Weg
+		TIME_WEG_M : positive := 4 ; -- Metall-Werkstück, kurzer Weg
+		FWD : std_logic := '0';
+		BCK : std_logic := '1';
+		RUN : std_logic := '1';
+		STP : std_logic := '0';
+		WEG_K : std_logic := '0';
+		WEG_M : std_logic := '1'
+		);
+
+	port (
+		reset : in std_logic; -- Key0
+		clk   	: in std_logic; --50 MHz
+		oe_in 	: in std_logic; -- Switch 9
+		opt_sens	: in std_logic; -- optischer Sensor
+		ind_sens	: in std_logic; -- induktiv Sensor
+		oe_n_out	: out std_logic;
+		weiche_out	: out std_logic; -- Weg A / Weg B -Umschaltung  
+		motor_pwr_out : out std_logic; -- ...
+		motor_dir_out : out std_logic -- Motor Drehrichtung
+		);
+end entity sortierer;
+
+architecture arch of sortierer is
+
+-- signals
+signal cnt : unsigned(25 downto 0);
+signal time_s : unsigned(4 downto 0); 
+signal weiche : std_logic;
+signal motor_pwr : std_logic;
+signal motor_dir : std_logic;
+
+type main_state_t is (idle,z1, z2);
+signal main_state, next_main_state : main_state_t;
+
+begin
+
+sort_control : process(clk, reset) is
+begin	
+	if (reset = '1') then
+		weiche <= '0';
+		motor_pwr <= '0';
+		next_main_state <= idle;
+
+	elsif rising_edge(clk) then
+		main_state <= next_main_state; -- z_reg
+				
+		-- fast counter, overflow = 1s 
+		if cnt > to_unsigned(CNT_OFL, cnt'length) or main_state = idle then
+			cnt <= (others => '0');
+		else
+			cnt <= cnt + 1;			
+		end if;
+
+		-- Sekunden timer		
+		if main_state = idle then -- reset timer
+			time_s <= (others => '0');	
+		elsif cnt = CNT_OFL then
+			time_s <= time_s + 1;
+		end if;
+
+		
+		case main_state is
+		
+			when idle => weiche <= '0';-- warte auf opt_sens hi
+							 motor_pwr <= '0';
+							 if opt_sens = '1' then
+								next_main_state <= z1;
+							 end if;
+
+			when z1 => weiche <= '0' ;
+						  motor_pwr <= '1';
+						  if ind_sens = '1' then
+							 next_main_state <= z2;
+						  elsif time_s >= TIME_WEG_K then
+						    next_main_state <= idle;
+						  end if;
+
+			when z2 => weiche <= '1' ;
+						  motor_pwr <= '1';						  
+						  if time_s >= TIME_WEG_M then
+						    next_main_state <= idle;
+						  end if;
+		end case;
+	end if;
+	oe_n_out <= not oe_in; -- voltage translator active
+	weiche_out <= weiche;
+	motor_pwr_out <= motor_pwr;
+   motor_dir_out <= motor_dir; 
+		
+end process sort_control;
+
+end architecture arch;
