@@ -7,7 +7,7 @@ class MyCanvas
 private:
 	unsigned int size_x;
 	unsigned int size_y;
-	char* canvas_array_ptr = new char[size_x * size_y + 1];
+	char* canvas_array_ptr;
 
 public:
 	MyCanvas(unsigned int first_size_x, unsigned int second_size_y) : size_x(first_size_x), size_y(second_size_y)
